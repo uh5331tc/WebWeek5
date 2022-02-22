@@ -53,8 +53,8 @@ console.log(newRate.toFixed(2))  // to fixed assigns decimal places
 
 // TODO write code to identify the currency symbol that has the highest exchange rate compared to Euros.
 //    In other words, identify the property with the largest value. the answer is BRL (Brazilian Real) at 3.8959 BRL to 1 Euro.
-let arr = Object.values(rates);
-let max = Math.max(...arr);
+let highestrate = Object.values(rates);
+let max = Math.max(...highestrate);
 
 console.log( `max value: ${max}` );
 
