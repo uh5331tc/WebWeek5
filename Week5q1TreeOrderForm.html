@@ -15,13 +15,13 @@
   </style>
 
 </head>
-<body>
+<body style="background-color: rgb(15, 201, 136);">
 
-    <h1>Minnesota Tree Order Form</h1>
+    <h1 style="color: rgb(253, 4, 199)"><b>Minnesota Tree Order Form </b></h1>
 
-    <p>Enter information to order your tree. All fields are required.</p>
+    <p><b>Information to order your tree. All fields are required.</b> </p>
 
-    <h2>Order Information</h2>
+    <h2 style="color: rgb(253, 4, 199)"><i>Order Information</i></h2>
 
     <label for="homeowner-name">Homeowner Name</label><input id="homeowner-name" name="homeowner-name">
     <br>
@@ -38,17 +38,17 @@
     <br>
 
     <label for="tree-type">Tree Type</label>
-    <select id="tree-type">
+    <select id="tree-type" style="background-color: rgb(165, 241, 175); ">
         <option disabled selected value=""> Select a tree </option>  <!-- Unselectable message shown. Since this will be required, it forces the user to actually pick a tree, not just click submit for the default first option -->
-        <option name="tree-type">Lilac</option>
-        <option name="tree-type">Maple</option>
-        <option name="tree-type">Oak</option>
+        <option style="background-color: rgb(239, 204, 255);" name="tree-type">Lilac</option>
+        <option style="background-color: rgb(255, 185, 163);"name="tree-type">Maple</option>
+        <option style="background-color: rgb(248, 228, 192);"name="tree-type">Oak</option>
     </select>
     <br>
 
-    <button id="submit-order">Submit Order</button>    
+    <button id="submit-order" style="background-color: rgb(22, 185, 44); border: 3px solid #1e5201;">Submit Order</button>    
 
-    <h2>Order Summary</h2>
+    <h2 style="color: rgb(253, 4, 199)"><b>Order Summary: </b> <Style></Style> </h2>
 
     <p id="order-summary">     
        <!--         fullForm how do i call this here?                            --> 
@@ -82,7 +82,7 @@
         //------------------- TODO get the value from the input#zipcode
         let cityName = cityCity.value
         let zipCode = zipZip.value
-        let fullForm = orderSummaryParagraph.value
+        //let fullForm = orderSummaryParagraph.value
 
         // TODO Validate that all six input and select elements have been completed                  
  
@@ -105,11 +105,11 @@
         }
                 // TODO Validate the zipcode is in the range 55001 and 56763. This will check that the zip code is in Minnesota.
 
-        if (zipCode >= 55001 || zipCode <= 56763) {
-            return
-        } else {
-            errors.push('Enter ZipCode between 55001 - 56763')
-        }
+        if (zipCode <= 55001 || zipCode >= 56763) {
+           errors.push('Enter ZipCode between 55001 - 56763')
+        } 
+            
+        console.log(errors)
       
         // if (!fullForm) {
         //     errors.push('Please Complete the Form')
@@ -119,14 +119,15 @@
         // display an alert with all of the error messages (use join)
         // and then return from this function to prevent further processing 
         if (errors.length > 0) {
-            let errorMsg = error.join('\n')
+            let errorMsg = errors.join('\n') 
             alert(errorMsg)
             return
         } 
-
-        return false
-        })
-
+        
+        let fullForm = `thank you for your order: ${name}, ' ',  ${houseNumber}, ' ', ${streetName}, ' ', ${treeType}, ' ', ${cityName}, ' ', ${zipCode}`
+        orderSummaryParagraph.innerHTML = fullForm
+    })
+    
         // TODO - If there are no errors, use a template string to display an order summary in the order summary paragraph
 
 
@@ -134,4 +135,3 @@
 
 </body>
 </html>
-
